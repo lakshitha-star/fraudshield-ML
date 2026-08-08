@@ -1,0 +1,22 @@
+artifact_path: file:C:/Users/LAKSHITHA/fraudshield_ML/mlruns/1/models/m-c255402d79ac47b3a6ec0348e4a751cf/artifacts
+flavors:
+  python_function:
+    data: model.ubj
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.14.3
+  xgboost:
+    code: null
+    data: model.ubj
+    model_class: xgboost.sklearn.XGBClassifier
+    model_format: ubj
+    xgb_version: 3.4.0
+mlflow_version: 3.15.1
+model_id: m-c255402d79ac47b3a6ec0348e4a751cf
+model_size_bytes: 339652
+model_uuid: m-c255402d79ac47b3a6ec0348e4a751cf
+prompts: null
+run_id: 09e34f063bd44dbbbb5df040e5224047
+utc_time_created: '2026-08-08 17:16:11.182648'

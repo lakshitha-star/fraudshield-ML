@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/LAKSHITHA/fraudshield_ML/mlruns/1/models/m-78a3985d21f44a79ac1d703a9dfaa51c/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.3
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.15.1
+model_id: m-78a3985d21f44a79ac1d703a9dfaa51c
+model_size_bytes: 9331
+model_uuid: m-78a3985d21f44a79ac1d703a9dfaa51c
+prompts: null
+run_id: 0428261236b64446b56106e66c6b432a
+utc_time_created: '2026-08-08 16:47:45.017368'
