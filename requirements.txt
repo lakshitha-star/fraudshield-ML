@@ -1,21 +1,12 @@
+streamlit
 pandas
 numpy
 scikit-learn
 xgboost
-lightgbm
-tensorflow
-torch
-torchvision
-torch-geometric
-dgl
-imbalanced-learn
-shap
-lime
 matplotlib
 seaborn
-plotly
-mlflow
-streamlit
-fastapi
-uvicorn
+joblib
+shap
+requests
+
 
