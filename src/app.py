@@ -47,27 +47,24 @@ input_dict["Amount"] = amount
 input_data = pd.DataFrame([input_dict], columns=feature_names)
 
 if st.button("Predict"):
-    if model_choice == "Logistic Regression" and scaler is not None:
-        input_data_scaled = scaler.transform(input_data)
-        prediction = model.predict(input_data_scaled)[0]
-        probability = model.predict_proba(input_data_scaled)[0][1]
+    if not sender or not receiver:
+        st.error("⚠️ Sender ID and Receiver ID are required!")
     else:
-        prediction = model.predict(input_data)[0]
-        probability = model.predict_proba(input_data)[0][1]
-
-    if prediction == 1:
-        st.error(f"⚠️ Fraudulent Transaction Detected (Probability: {probability:.2f})")
-        if model_choice == "Logistic Regression":
-            reason = "Linear patterns flagged as suspicious."
-        elif model_choice == "Random Forest":
-            reason = "Decision trees detected anomalies."
+        if model_choice == "Logistic Regression" and scaler is not None:
+            input_data_scaled = scaler.transform(input_data)
+            prediction = model.predict(input_data_scaled)[0]
+            probability = model.predict_proba(input_data_scaled)[0][1]
         else:
-            reason = "Boosted rules identified unusual features."
-        st.write(f"Reason: {reason}")
-    else:
-        st.success(f"✅ Legitimate Transaction (Probability of fraud: {probability:.2f})")
-        st.write("Reason: Transaction features align with normal behavior.")
+            prediction = model.predict(input_data)[0]
+            probability = model.predict_proba(input_data)[0][1]
 
-    # Show transaction context
-    st.write(f"Sender: {sender}, Receiver: {receiver}, Type: {txn_type}, Device: {device}, Amount: {amount}")
-
+        # Unified JSON output
+        st.json({
+            "sender_id": sender,
+            "receiver_id": receiver,
+            "transaction_type": txn_type,
+            "device": device,
+            "amount": amount,
+            "prediction": "Fraud" if prediction == 1 else "Not Fraud",
+            "probability": float(probability)
+        })
